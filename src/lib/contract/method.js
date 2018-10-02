@@ -88,6 +88,10 @@ export default class Method {
         if(![ 'pure', 'view' ].includes(stateMutability.toLowerCase()))
             return callback(`Methods with state mutability "${stateMutability}" must use send()`);
 
+        // If a function isn't payable, dont provide a callValue.
+        if(![ 'payable' ].includes(stateMutability.toLowerCase()))
+                options.callValue = 0;
+        
         options = { ...this.defaultOptions, ...options };
 
         const parameters = args.map((value, index) => ({
@@ -149,6 +153,10 @@ export default class Method {
 
         if([ 'pure', 'view' ].includes(stateMutability.toLowerCase()))
                 return callback(`Methods with state mutability "${stateMutability}" must use call()`);
+
+        // If a function isn't payable, dont provide a callValue.
+        if(![ 'payable' ].includes(stateMutability.toLowerCase()))
+                options.callValue = 0;
 
         options = { ...this.defaultOptions, ...options };
 
