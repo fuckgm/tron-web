@@ -798,11 +798,11 @@ export default class TransactionBuilder {
 
         if(!utils.isBoolean(hasApproval))
             return callback('Invalid hasApproval provided');
-
+        
         this.tronWeb.fullNode.request('wallet/proposalapprove', {
             owner_address: this.tronWeb.address.toHex(voterAddress),
             proposal_id: parseInt(proposalID),
-            is_add_approval: isApproval.toString()
+            is_add_approval: hasApproval
         }, 'post').then(transaction => {
             if(transaction.Error)
                 return callback(transaction.Error);
