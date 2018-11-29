@@ -755,7 +755,7 @@ export default class Trx {
      * @param options
      * @param callback
      */
-    async freezeBalance(amount = 0, duration = 3, resource = "BANDWIDTH", options = {}, callback = false)
+    async freezeBalance(amount = 0, duration = 3, resource = "BANDWITH", options = {}, callback = false)
     {
         if(utils.isFunction(duration)) {
             callback = duration;
@@ -764,7 +764,7 @@ export default class Trx {
 
         if(utils.isFunction(resource)) {
             callback = resource;
-            resource = "BANDWIDTH";
+            resource = "BANDWITH";
         }
 
         if(utils.isFunction(options)) {
@@ -778,8 +778,8 @@ export default class Trx {
         if(!callback)
             return this.injectPromise(this.freezeBalance, amount, duration, resource, options);
 
-        if(![ 'BANDWIDTH', 'ENERGY' ].includes(resource))
-            return callback('Invalid resource provided: Expected "BANDWIDTH" or "ENERGY"');
+        if(![ 'BANDWITH', 'ENERGY' ].includes(resource))
+            return callback('Invalid resource provided: Expected "BANDWITH" or "ENERGY"');
 
         if(!utils.isInteger(amount) || amount <= 0)
             return callback('Invalid amount provided');
@@ -816,11 +816,11 @@ export default class Trx {
      * @param options
      * @param callback
      */
-    async unfreezeBalance(resource = "BANDWIDTH", options = {}, callback = false)
+    async unfreezeBalance(resource = "BANDWITH", options = {}, callback = false)
     {
         if(utils.isFunction(resource)) {
             callback = resource;
-            resource = 'BANDWIDTH';
+            resource = 'BANDWITH';
         }
 
         if(utils.isFunction(options)) {
@@ -834,8 +834,8 @@ export default class Trx {
         if(!callback)
             return this.injectPromise(this.unfreezeBalance, resource, options);
 
-        if(![ 'BANDWIDTH', 'ENERGY' ].includes(resource))
-            return callback('Invalid resource provided: Expected "BANDWIDTH" or "ENERGY"');
+        if(![ 'BANDWITH', 'ENERGY' ].includes(resource))
+            return callback('Invalid resource provided: Expected "BANDWITH" or "ENERGY"');
 
         options = {
             privateKey: this.tronWeb.defaultPrivateKey,

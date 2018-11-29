@@ -122,7 +122,7 @@ export default class TransactionBuilder {
         }).catch(err => callback(err));
     }
 
-    freezeBalance(amount = 0, duration = 3, resource = "BANDWIDTH", address = this.tronWeb.defaultAddress.hex, callback = false)
+    freezeBalance(amount = 0, duration = 3, resource = "BANDWITH", address = this.tronWeb.defaultAddress.hex, callback = false)
     {
         if(utils.isFunction(address)) {
             callback = address;
@@ -136,14 +136,14 @@ export default class TransactionBuilder {
 
         if(utils.isFunction(resource)) {
             callback = resource;
-            resource = "BANDWIDTH";
+            resource = "BANDWITH";
         }
 
         if(!callback)
             return this.injectPromise(this.freezeBalance, amount, duration, resource, address);
 
-        if(![ 'BANDWIDTH', 'ENERGY' ].includes(resource))
-            return callback('Invalid resource provided: Expected "BANDWIDTH" or "ENERGY"');
+        if(![ 'BANDWITH', 'ENERGY' ].includes(resource))
+            return callback('Invalid resource provided: Expected "BANDWITH" or "ENERGY"');
 
         if(!utils.isInteger(amount) || amount <= 0)
             return callback('Invalid amount provided');
@@ -167,7 +167,7 @@ export default class TransactionBuilder {
         }).catch(err => callback(err));
     }
 
-    unfreezeBalance(resource = "BANDWIDTH", address = this.tronWeb.defaultAddress.hex, callback = false)
+    unfreezeBalance(resource = "BANDWITH", address = this.tronWeb.defaultAddress.hex, callback = false)
     {
         if(utils.isFunction(address)) {
             callback = address;
@@ -176,14 +176,14 @@ export default class TransactionBuilder {
 
         if(utils.isFunction(resource)) {
             callback = resource;
-            resource = "BANDWIDTH";
+            resource = "BANDWITH";
         }
 
         if(!callback)
             return this.injectPromise(this.unfreezeBalance, resource, address);
 
-        if(![ 'BANDWIDTH', 'ENERGY' ].includes(resource))
-            return callback('Invalid resource provided: Expected "BANDWIDTH" or "ENERGY"');
+        if(![ 'BANDWITH', 'ENERGY' ].includes(resource))
+            return callback('Invalid resource provided: Expected "BANDWITH" or "ENERGY"');
 
         if(!this.tronWeb.isAddress(address))
             return callback('Invalid address provided');
