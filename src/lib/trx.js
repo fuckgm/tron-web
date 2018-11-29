@@ -778,7 +778,7 @@ export default class Trx {
         if(!callback)
             return this.injectPromise(this.freezeBalance, amount, duration, resource, options);
 
-        if(![ 'BANDWITH', 'ENERGY' ].includes(resource))
+        if(!['BANDWITH', 'ENERGY'].includes(resource))
             return callback('Invalid resource provided: Expected "BANDWITH" or "ENERGY"');
 
         if(!utils.isInteger(amount) || amount <= 0)
@@ -834,7 +834,7 @@ export default class Trx {
         if(!callback)
             return this.injectPromise(this.unfreezeBalance, resource, options);
 
-        if(![ 'BANDWITH', 'ENERGY' ].includes(resource))
+        if(!['BANDWITH', 'ENERGY'].includes(resource))
             return callback('Invalid resource provided: Expected "BANDWITH" or "ENERGY"');
 
         options = {

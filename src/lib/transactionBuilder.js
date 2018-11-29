@@ -142,7 +142,7 @@ export default class TransactionBuilder {
         if(!callback)
             return this.injectPromise(this.freezeBalance, amount, duration, resource, address);
 
-        if(![ 'BANDWITH', 'ENERGY' ].includes(resource))
+        if(!['BANDWITH', 'ENERGY'].includes(resource))
             return callback('Invalid resource provided: Expected "BANDWITH" or "ENERGY"');
 
         if(!utils.isInteger(amount) || amount <= 0)
@@ -182,7 +182,7 @@ export default class TransactionBuilder {
         if(!callback)
             return this.injectPromise(this.unfreezeBalance, resource, address);
 
-        if(![ 'BANDWITH', 'ENERGY' ].includes(resource))
+        if(!['BANDWITH', 'ENERGY'].includes(resource))
             return callback('Invalid resource provided: Expected "BANDWITH" or "ENERGY"');
 
         if(!this.tronWeb.isAddress(address))
